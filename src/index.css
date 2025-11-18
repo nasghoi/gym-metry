@@ -1,18 +1,23 @@
-@import url('https://fonts.googleapis.com/css2?family=Stack+Sans+Notch:wght@200..700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Stack+Sans+Notch:wght@200..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 @import "tailwindcss";
 
 @theme {
     --font-inter: "Inter", sans-serif;
-    --font-headings:"Stack Sans Notch", sans-serif; 
+    --font-headings: "Stack Sans Notch", sans-serif;
 }
 
-h1, h2, h3, h4, h5, h6 {
-    @apply font-headings font-extrabold text-lg
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    @apply font-headings font-extrabold text-lg;
 }
 
 h1 {
-    @apply text-2xl
+    @apply text-2xl;
 }
 
 a {
@@ -21,6 +26,28 @@ a {
 
 ol {
     @apply list-decimal list-inside space-y-2 pl-4;
+}
+
+.btn-primary {
+    @apply bg-indigo-700
+      hover:bg-indigo-900
+      hover:scale-[1.02] 
+      hover:-translate-y-0.5
+      focus:ring-2
+      focus:ring-indigo-500
+      focus:ring-offset-2
+      text-white
+      cursor-pointer
+      font-semibold
+      py-2
+      px-4
+      rounded-lg
+      shadow-md
+      transition
+      duration-150
+      ease-in-out
+      disabled:opacity-50
+      disabled:cursor-not-allowed;
 }
 
 body {
@@ -93,10 +120,11 @@ h3,
 }
 
 .plan-card-header {
+    @apply mb-1;
     display: flex;
     gap: 0.5rem;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .plan-card-header p:first-of-type,
