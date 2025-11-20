@@ -50,6 +50,18 @@ ol {
       disabled:cursor-not-allowed;
 }
 
+.card {
+    @apply bg-indigo-300
+      rounded-xl
+      shadow-lg
+      p-6
+      border-t-4
+      border-indigo-900        
+      overflow-hidden
+      hover:scale-[1.01] 
+      hover:-translate-y-0.5;
+}
+
 body {
     @apply font-inter;
     padding: 1rem 0;
