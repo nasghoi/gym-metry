@@ -1,9 +1,10 @@
-import { workoutProgram as training_plan } from '../utils/index.js'
+import { workoutProgram as training_plan } from '../utils'
 import WorkoutCard from "./WorkoutCard.jsx";
+import React, { useState } from 'react'
 
 export default function Grid() {
     const isLocked = false
-    const selectedWorkout = 2
+    const [selectedWorkout, setSelectedWorkout] = useState(null);
 
     return (
         <div className="training-plan-grid">
@@ -28,7 +29,9 @@ export default function Grid() {
                 }
 
                 return (
-                    <button className={'btn-primary' + (isLocked ? ' inactive' : '')} key={workoutIndex}>
+                    <button onClick={() => {
+                        setSelectedWorkout(workoutIndex)
+                    }} className={'btn-primary' + (isLocked ? ' inactive' : '')} key={workoutIndex}>
                         <div className="plan-card-header">
                             <p>Day {dayNum}</p>
                         </div>

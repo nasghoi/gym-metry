@@ -1,17 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Modal from "./Modal";
+import { exerciseDescriptions } from '../utils';
 
 export default function WorkoutCard(props) {
     const { trainingPlan, workoutIndex, type, dayNum, icon } = props
 
     const { warmup, workout } = trainingPlan || {}
-
-    const showExerciseDescription = { name: 'sample-exercise', description: 'This is a sample description for the exercise.' };
+    const [showExerciseDescription, setShowExerciseDescription] = useState(null);
+    // const showExerciseDescription = { name: 'sample-exercise', description: 'This is a sample description for the exercise.' };
 
     return (
         <div className="workout-container">
-            <Modal showExerciseDescription={showExerciseDescription}
-                handleCloseModal={() => { }} />
+            {showExerciseDescription && (
+                <Modal showExerciseDescription={showExerciseDescription}
+                    handleCloseModal={() => {
+                        setShowExerciseDescription(null)
+                    }} />
+            )}
             <div className="workout-card card">
                 <div className="plan-card-header">
                     <p>Day {dayNum}</p>
@@ -34,7 +39,12 @@ export default function WorkoutCard(props) {
                         <React.Fragment key={warmupIndex}>
                             <div className="exercise-name">
                                 <p>{warmupIndex + 1}. {warmupExercise.name}</p>
-                                <button className="help-icon">
+                                <button onClick={() => (
+                                    setShowExerciseDescription({
+                                        name: warmupExercise.name,
+                                        description: exerciseDescriptions[warmupExercise.name]
+                                    })
+                                )} className="help-icon">
                                     <i className="fa-regular fa-circle-question" />
                                 </button>
                             </div>
@@ -58,6 +68,14 @@ export default function WorkoutCard(props) {
                         <React.Fragment key={workoutIndex}>
                             <div className="exercise-name">
                                 <p>{workoutIndex + 1}. {workoutExercise.name}</p>
+                                <button onClick={() => (
+                                    setShowExerciseDescription({
+                                        name: workoutExercise.name,
+                                        description: exerciseDescriptions[workoutExercise.name]
+                                    })
+                                )} className="help-icon">
+                                    <i className="fa-regular fa-circle-question" />
+                                </button>
                             </div>
                             <p className="exercise-info">{workoutExercise.sets}</p>
                             <p className="exercise-info">{workoutExercise.reps}</p>
